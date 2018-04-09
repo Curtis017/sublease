@@ -1,13 +1,15 @@
 import * as React from 'react';
 
+import { Route, Switch } from 'react-router';
 import { withRouter } from 'react-router-dom';
 import { connect, Dispatch } from 'react-redux';
-import { SubleaseActions, fetchSubleasesRequest } from '../actions';
+import * as actions from './actions';
 
-import ErrorContainer from '../containers/ErrorContainer';
-import RouterContainer from '../containers/RouterContainer';
-import NavigationBar from '../components/NavigationBar';
-import Footer from '../components/Footer';
+import ErrorContainer from './containers/ErrorContainer';
+import NavigationBar from './components/NavigationBar';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import NotFound from './components/NotFound';
 
 interface DispatchFromProps {
   fetchSubleasesRequest: () => void;
@@ -23,16 +25,19 @@ class App extends React.Component<DispatchFromProps, {}> {
       <main>
         <ErrorContainer />
         <NavigationBar />
-        <RouterContainer />
+        <Switch>
+          <Route exact={true} path="/" component={Home}/>
+          <Route component={NotFound}/>
+        </Switch>
         <Footer />
       </main>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<SubleaseActions>): DispatchFromProps => {
+const mapDispatchToProps = (dispatch: Dispatch<actions.SubleaseActions>): DispatchFromProps => {
   return {
-    fetchSubleasesRequest: () => dispatch(fetchSubleasesRequest()),
+    fetchSubleasesRequest: () => dispatch(actions.fetchSubleasesRequest()),
   };
 };
 
