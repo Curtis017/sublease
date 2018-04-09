@@ -10,6 +10,7 @@ import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
+import SubleasesContainer from './containers/SubleasesContainer';
 
 interface DispatchFromProps {
   fetchSubleasesRequest: () => void;
@@ -27,6 +28,7 @@ class App extends React.Component<DispatchFromProps, {}> {
         <NavigationBar />
         <Switch>
           <Route exact={true} path="/" component={Home}/>
+          <Route exact={true} path="/subleases" component={SubleasesContainer}/>
           <Route component={NotFound}/>
         </Switch>
         <Footer />
