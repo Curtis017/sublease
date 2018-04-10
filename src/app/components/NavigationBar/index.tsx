@@ -7,10 +7,10 @@ const NavigationBar: React.StatelessComponent = () => (
       <Link to="/">Home</Link>
     </li>
     <li>
-      <Link to="/Subleases">Subleases</Link>
+      <Link to="/subleases">Subleases</Link>
     </li>
     <li>
-      <Link to="/Profile">Profile</Link>
+      <Link to="/profile">Profile</Link>
     </li>
   </ul>
 );
